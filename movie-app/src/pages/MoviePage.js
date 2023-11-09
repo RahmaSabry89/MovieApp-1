@@ -5,7 +5,6 @@ import "../components/MoviePage.css";
 import getmoviedetails from "../api/movieDetails";
 const MoviePage = () => {
   const { id } = useParams();
-
   const [movie, setMovie] = useState({});
   let favorites = [];
   let like = [];
@@ -107,7 +106,6 @@ const MoviePage = () => {
               </div>
             </div>
           </div>
-
           <div className="col">
             <div class="container text-dark">
               <div class="row d-flex justify-content-center">
@@ -125,14 +123,12 @@ const MoviePage = () => {
                           Donec lacinia congue felis in faucibus ras purus odio,
                           vestibulum in vulputate at, tempus viverra turpis.
                         </p>
-
                         <div>
                           <Link class="link-muted">Reply</Link>
                         </div>
                       </div>
                     </div>
                   </div>
-
                   <div class="card w-100 mt-2">
                     <div class="card-body p-4">
                       <div>
@@ -146,7 +142,6 @@ const MoviePage = () => {
                           Donec lacinia congue felis in faucibus ras purus odio,
                           vestibulum in vulputate at, tempus viverra turpis.
                         </p>
-
                         <div>
                           <Link class="link-muted">Reply</Link>
                         </div>
