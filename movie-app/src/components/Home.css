@@ -1,0 +1,22 @@
+.divroot3 {
+    background-image: url(./71mUK6cPosL.jpg);
+    background-repeat: repeat;
+    background-size: contain;
+    font-family: 'Times New Roman', Times, serif;
+    height: 100vh;
+  }
+
+  .movie-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .movie-card {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    width: 300px; /* Set a fixed width for each movie card */
+  }
+
+  

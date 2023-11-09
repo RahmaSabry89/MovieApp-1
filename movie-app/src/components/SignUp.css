@@ -1,0 +1,43 @@
+.divroot1 {
+    background-image: url(./71mUK6cPosL.jpg);
+    background-repeat: repeat;
+    background-size: contain;
+    font-family: 'Times New Roman', Times, serif;
+    height: 100vh;
+  }
+
+  .form{
+    margin-top: 140px;
+    margin-left: 680px;
+    width: 440px;
+    background-color: white;
+height: 420px;
+border-radius: 5px;
+display: grid;
+  justify-content: center;
+  align-items: center;
+  }
+
+  .login {
+    background-color: rgb(118, 42, 224);
+    border: none;
+    color: rgb(253, 252, 252);
+    border-radius: 5px;
+    width: 70px;
+    content: icon;
+    display: inline-block;
+    text-decoration: none;
+  }
+
+  .SignUp{
+    background-color: rgb(118, 42, 224);
+    border: none;
+    color: rgb(253, 252, 252);
+    border-radius: 5px;
+    width: 70px;
+    content: icon;
+    display: inline-block;
+    text-decoration: none;
+  }
+    
+  
