@@ -1,29 +1,39 @@
 .divroot4 {
-    background-image: url(./71mUK6cPosL.jpg);
-    background-repeat: repeat;
-    background-size: contain;
-    font-family: 'Times New Roman', Times, serif;
-    height: 100vh;
-  }
-  .card3{
-    margin-top: 12px;
-    margin-left: 0px;
-    width: 600px;
-    background-color: white;
-  }
-  .image{
-    height: 50px;
-width: 50px;
-  }
-  .card-img-top{
-    margin-top: 15px;
-    width: 200px;
-  }
-  .link-muted { color: #aaa; } .link-muted:hover { color: #1266f1; }
-
-.card{
-  width:120px ;
+  background-image: url(./71mUK6cPosL.jpg);
+  background-repeat: repeat;
+  background-size: contain;
+  font-family: 'Times New Roman', Times, serif;
+  height: 100vh;
 }
 
-    
-  
+.card4 {
+  margin-top: 12px;
+  margin-left: 0px;
+  width: 600px;
+  background-color: white;
+
+}
+
+.image {
+  height: 50px;
+  width: 50px;
+}
+
+.card-img-top {
+  margin-top: 15px;
+  width: 200px;
+}
+
+.link-muted {
+  color: #aaa;
+}
+
+.link-muted:hover {
+  color: #1266f1;
+}
+
+.cardC {
+  width: 400px;
+  background-color: white;
+  height: 120px;
+}

@@ -1,24 +1,33 @@
 .divroot3 {
-    background-image: url(./71mUK6cPosL.jpg);
-    background-repeat: repeat;
-    background-size: contain;
-    font-family: 'Times New Roman', Times, serif;
-  }
+  background-image: url(./71mUK6cPosL.jpg);
+  background-repeat: repeat;
+  background-size: contain;
+  font-family: 'Times New Roman', Times, serif;
+}
 
-  .movie-container {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  
-  .movie-card {
-    border: 1px solid #ddd;
-    padding: 10px;
-    margin: 10px;
-    border-radius: 5px;
-    width: 300px; /* Set a fixed width for each movie card */
-  }
+.movie-container3 {
+  display: flex;
+  flex-wrap: wrap;
+}
 
-  .form-select{
-    margin-top: 15px;
-    width: 350px;
-  }
+.movie-card3 {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+  width: 300px;
+}
+
+.form-select3 {
+  margin-top: 15px;
+  width: 350px;
+  height: 40px;
+}
+
+.card3 {
+  width: 250px;
+  background-color: white;
+  display: grid;
+  justify-content: center;
+  height: 365px;
+}
