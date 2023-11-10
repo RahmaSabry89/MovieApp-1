@@ -7,7 +7,7 @@ const MoviePage = () => {
   const { id } = useParams();
   const [movie, setMovie] = useState({});
   const [comments, setComments] = useState([]);
-  const [newComment, setNewComment] = useState('');
+  const [newComment, setNewComment] = useState("");
   let favorites = [];
   let remove = [];
   let like = [];
@@ -25,33 +25,33 @@ const MoviePage = () => {
   }, [id]);
 
   useEffect(() => {
-    const storedComments = JSON.parse(localStorage.getItem('comments')) || [];
+    const storedComments = JSON.parse(localStorage.getItem("comments")) || [];
     setComments(storedComments);
   }, []);
 
-  // Function to handle posting a new comment
   const handlePostComment = () => {
-    if (newComment.trim() !== '') {
-      const updatedComments = [...comments, { user: 'Johny Cash', time: 'Now', text: newComment, replies: [] }];
+    if (newComment.trim() !== "") {
+      const updatedComments = [
+        ...comments,
+        { user: "Johny Cash", time: "Now", text: newComment, replies: [] },
+      ];
       setComments(updatedComments);
-      setNewComment('');
-
-      // Store comments in local storage
-      localStorage.setItem('comments', JSON.stringify(updatedComments));
+      setNewComment("");
+      localStorage.setItem("comments", JSON.stringify(updatedComments));
     }
   };
 
-  // Function to handle replying to a comment
   const handleReply = (commentIndex) => {
-    const replyText = prompt('Enter your reply:');
-    if (replyText !== null && replyText.trim() !== '') {
+    const replyText = prompt("Enter your reply:");
+    if (replyText !== null && replyText.trim() !== "") {
       const updatedComments = [...comments];
-      updatedComments[commentIndex].replies.push({ user: 'John Doe', time: 'Now', text: replyText });
-
+      updatedComments[commentIndex].replies.push({
+        user: "John Doe",
+        time: "Now",
+        text: replyText,
+      });
       setComments(updatedComments);
-
-      // Store comments in local storage
-      localStorage.setItem('comments', JSON.stringify(updatedComments));
+      localStorage.setItem("comments", JSON.stringify(updatedComments));
     }
   };
   const add_favorite = async () => {
@@ -156,7 +156,11 @@ const MoviePage = () => {
                         remove_favorite();
                       }}
                     >
-                      <img className="image" src="../images/remove.png" alt="" />
+                      <img
+                        className="image"
+                        src="../images/remove.png"
+                        alt=""
+                      />
                     </div>{" "}
                   </div>
                 </div>
@@ -165,42 +169,48 @@ const MoviePage = () => {
           </div>
           <div className="col">
             <div className="container text-dark">
-            {comments.map((comment, commentIndex) => (
-              <div key={commentIndex} className="card w-100 mt-2">
-                <div className="card-body p-4">
-                  <div>
-                    <h5>{comment.user}</h5>
-                    <p className="small">{comment.time}</p>
-                    <p>{comment.text}</p>
-      
-                    {/* Display replies */}
-                    {comment.replies.map((reply, replyIndex) => (
-                      <div className="row">
-                     <h6> Reply by </h6>
-                      <div key={replyIndex}>
-                        <h6>{reply.user}</h6>
-                        <p className="small">{reply.time}</p>
-                        <p>{reply.text}</p>
-                      </div>
-                      </div>
-                    ))}      
+              {comments.map((comment, commentIndex) => (
+                <div key={commentIndex} className="card w-100 mt-2">
+                  <div className="card-body p-4">
                     <div>
-                      <Link className="link-muted" onClick={() => handleReply(commentIndex)}>
-                        Reply
-                      </Link>
+                      <h5>{comment.user}</h5>
+                      <p className="small">{comment.time}</p>
+                      <p>{comment.text}</p>
+                      {/* Display replies */}
+                      {comment.replies.map((reply, replyIndex) => (
+                        <div className="row">
+                          <h6> Reply by </h6>
+                          <div key={replyIndex}>
+                            <h6>{reply.user}</h6>
+                            <p className="small">{reply.time}</p>
+                            <p>{reply.text}</p>
+                          </div>
+                        </div>
+                      ))}
+                      <div>
+                        <Link
+                          className="link-muted"
+                          onClick={() => handleReply(commentIndex)}
+                        >
+                          Reply
+                        </Link>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
             </div>
           </div>
         </div>
         <div className="row">
           <div className="cardC">
             <div className="form-outline ">
-              <textarea className="form-control" id="textAreaExample"  value={newComment}
-              onChange={(e) => setNewComment(e.target.value)}></textarea>
+              <textarea
+                className="form-control"
+                id="textAreaExample"
+                value={newComment}
+                onChange={(e) => setNewComment(e.target.value)}
+              ></textarea>
             </div>
             <div className="float-end ">
               <button
