@@ -5,7 +5,6 @@ In this project, I designed a Movie App with many features.
 I provided the movie information with the api I got from the https://www.themoviedb.org/documentation/api site.
 And I used Firebase for authentication.
 The user can log in and register with email address .
-Access to movie details is restricted for visitors who do not log in.
 
 first signup page which create user in firebase then login with this user then view the home page which
 contain button favourite to route to favourites movies which contain favourites movies (stored in local storage) selector to select between movies(top - upcoming - nowplaying) when click on one of these movies it route to Movie page whic contain a details about the movie and comments about it
@@ -20,7 +19,8 @@ add_favorite store the favourite movie i select in local storage and appear on t
 
 add_like store the liked movie i select in local storage
 
-At the end of the project, following topics are to be covered;
+At the end of the project, following topics are to be covered:
+
 HTML
 CSS
 JS
