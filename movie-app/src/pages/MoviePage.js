@@ -6,7 +6,10 @@ import getmoviedetails from "../api/movieDetails";
 const MoviePage = () => {
   const { id } = useParams();
   const [movie, setMovie] = useState({});
+  const [comments, setComments] = useState([]);
+  const [newComment, setNewComment] = useState('');
   let favorites = [];
+  let remove = [];
   let like = [];
 
   useEffect(() => {
@@ -21,10 +24,40 @@ const MoviePage = () => {
     console.log(favorites.some((item) => item.id === parseInt(id)));
   }, [id]);
 
+  useEffect(() => {
+    const storedComments = JSON.parse(localStorage.getItem('comments')) || [];
+    setComments(storedComments);
+  }, []);
+
+  // Function to handle posting a new comment
+  const handlePostComment = () => {
+    if (newComment.trim() !== '') {
+      const updatedComments = [...comments, { user: 'Johny Cash', time: 'Now', text: newComment, replies: [] }];
+      setComments(updatedComments);
+      setNewComment('');
+
+      // Store comments in local storage
+      localStorage.setItem('comments', JSON.stringify(updatedComments));
+    }
+  };
+
+  // Function to handle replying to a comment
+  const handleReply = (commentIndex) => {
+    const replyText = prompt('Enter your reply:');
+    if (replyText !== null && replyText.trim() !== '') {
+      const updatedComments = [...comments];
+      updatedComments[commentIndex].replies.push({ user: 'John Doe', time: 'Now', text: replyText });
+
+      setComments(updatedComments);
+
+      // Store comments in local storage
+      localStorage.setItem('comments', JSON.stringify(updatedComments));
+    }
+  };
   const add_favorite = async () => {
     let fav = JSON.parse(localStorage.getItem("favorites"));
     if (fav) {
-      if (fav.some((item) => item.id === id)) {
+      if (fav.some((item) => item.id !== parseInt(id))) {
         fav.push(movie);
         localStorage.setItem("favorites", JSON.stringify(fav));
         favorites = fav;
@@ -39,7 +72,7 @@ const MoviePage = () => {
   const add_like = async () => {
     let like = JSON.parse(localStorage.getItem("like"));
     if (like) {
-      if (like.some((item) => item.id === id)) {
+      if (like.some((item) => item.id !== parseInt(id))) {
         like.push(movie);
         localStorage.setItem("like", JSON.stringify(like));
         like = like;
@@ -48,6 +81,21 @@ const MoviePage = () => {
       let like1 = [movie];
       localStorage.setItem("like", JSON.stringify(like1));
       like = like1;
+    }
+  };
+
+  const remove_favorite = async () => {
+    let remove = JSON.parse(localStorage.getItem("remove"));
+    if (remove) {
+      if (remove.some((item) => item.id !== parseInt(id))) {
+        remove.pop(movie);
+        localStorage.setItem("remove", JSON.stringify(remove));
+        remove = remove;
+      }
+    } else {
+      let remove1 = [movie];
+      localStorage.setItem("remove", JSON.stringify(remove1));
+      remove = remove1;
     }
   };
 
@@ -102,67 +150,66 @@ const MoviePage = () => {
                       <img className="image" src="../images/love.jpg" alt="" />
                     </div>{" "}
                   </div>
+                  <div className="col">
+                    <div
+                      onClick={() => {
+                        remove_favorite();
+                      }}
+                    >
+                      <img className="image" src="../images/remove.png" alt="" />
+                    </div>{" "}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
           <div className="col">
             <div class="container text-dark">
-              <div class="row d-flex justify-content-center">
-                <div class="col-md-11 col-lg-9 col-xl-7">
-                  <div class="card w-100 mt-1">
-                    <div class="card-body p-4">
-                      <div>
-                        <h5>Johny Cash</h5>
-                        <p class="small">3 hours ago</p>
-                        <p>
-                          Cras sit amet nibh libero, in gravida nulla. Nulla vel
-                          metus scelerisque ante sollicitudin. Cras purus odio,
-                          vestibulum in vulputate at, tempus viverra turpis.
-                          Fusce condimentum nunc ac nisi vulputate fringilla.
-                          Donec lacinia congue felis in faucibus ras purus odio,
-                          vestibulum in vulputate at, tempus viverra turpis.
-                        </p>
-                        <div>
-                          <Link class="link-muted">Reply</Link>
-                        </div>
+            {comments.map((comment, commentIndex) => (
+              <div key={commentIndex} className="card w-100 mt-2">
+                <div className="card-body p-4">
+                  <div>
+                    <h5>{comment.user}</h5>
+                    <p className="small">{comment.time}</p>
+                    <p>{comment.text}</p>
+      
+                    {/* Display replies */}
+                    {comment.replies.map((reply, replyIndex) => (
+                      <div className="row">
+                     <h6> Reply by </h6>
+                      <div key={replyIndex}>
+                        <h6>{reply.user}</h6>
+                        <p className="small">{reply.time}</p>
+                        <p>{reply.text}</p>
                       </div>
-                    </div>
-                  </div>
-                  <div class="card w-100 mt-2">
-                    <div class="card-body p-4">
-                      <div>
-                        <h5>Johny Cash</h5>
-                        <p class="small">3 hours ago</p>
-                        <p>
-                          Cras sit amet nibh libero, in gravida nulla. Nulla vel
-                          metus scelerisque ante sollicitudin. Cras purus odio,
-                          vestibulum in vulputate at, tempus viverra turpis.
-                          Fusce condimentum nunc ac nisi vulputate fringilla.
-                          Donec lacinia congue felis in faucibus ras purus odio,
-                          vestibulum in vulputate at, tempus viverra turpis.
-                        </p>
-                        <div>
-                          <Link class="link-muted">Reply</Link>
-                        </div>
                       </div>
+
+                    ))}
+      
+                    <div>
+                      <Link className="link-muted" onClick={() => handleReply(commentIndex)}>
+                        Reply
+                      </Link>
                     </div>
                   </div>
                 </div>
               </div>
+            ))}
             </div>
           </div>
         </div>
         <div class="row">
           <div class="cardC">
             <div class="form-outline ">
-              <textarea class="form-control" id="textAreaExample"></textarea>
+              <textarea class="form-control" id="textAreaExample"  value={newComment}
+              onChange={(e) => setNewComment(e.target.value)}></textarea>
             </div>
             <div class="float-end ">
               <button
                 type="button"
                 class="btn  "
                 style={{ backgroundColor: "rgb(105, 46, 46)", color: "white" }}
+                onClick={handlePostComment}
               >
                 Post comment
               </button>
