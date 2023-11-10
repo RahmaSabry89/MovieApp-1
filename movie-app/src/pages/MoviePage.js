@@ -121,7 +121,7 @@ const MoviePage = () => {
       </nav>
       <div className="container">
         <div className="row">
-          <div class="col">
+          <div className="col">
             <div className="card4">
               <img
                 src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
@@ -164,7 +164,7 @@ const MoviePage = () => {
             </div>
           </div>
           <div className="col">
-            <div class="container text-dark">
+            <div className="container text-dark">
             {comments.map((comment, commentIndex) => (
               <div key={commentIndex} className="card w-100 mt-2">
                 <div className="card-body p-4">
@@ -183,9 +183,7 @@ const MoviePage = () => {
                         <p>{reply.text}</p>
                       </div>
                       </div>
-
-                    ))}
-      
+                    ))}      
                     <div>
                       <Link className="link-muted" onClick={() => handleReply(commentIndex)}>
                         Reply
@@ -198,22 +196,22 @@ const MoviePage = () => {
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="cardC">
-            <div class="form-outline ">
-              <textarea class="form-control" id="textAreaExample"  value={newComment}
+        <div className="row">
+          <div className="cardC">
+            <div className="form-outline ">
+              <textarea className="form-control" id="textAreaExample"  value={newComment}
               onChange={(e) => setNewComment(e.target.value)}></textarea>
             </div>
-            <div class="float-end ">
+            <div className="float-end ">
               <button
                 type="button"
-                class="btn  "
+                className="btn  "
                 style={{ backgroundColor: "rgb(105, 46, 46)", color: "white" }}
                 onClick={handlePostComment}
               >
                 Post comment
               </button>
-              <button type="button" class="btn  ">
+              <button type="button" className="btn  ">
                 Cancel
               </button>
             </div>

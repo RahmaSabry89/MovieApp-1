@@ -32,7 +32,7 @@ const Favourite = () => {
       </nav>
       <div>
         {movies.map((movie, index) => (
-          <div key={movie.id} className="movie-card">
+          <div key={movie.id} className="col">
             {
               <div className="card5">
                 <img

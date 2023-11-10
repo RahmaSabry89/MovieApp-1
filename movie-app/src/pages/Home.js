@@ -74,10 +74,10 @@ const Home = () => {
             <span className="navbar-toggler-icon"></span>
           </button>
         </div>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item" style={{ marginLeft: "15px" }}>
-              <Link class="nav-link " aria-current="page" to="/Favourite">
+        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+            <li className="nav-item" style={{ marginLeft: "15px" }}>
+              <Link className="nav-link " aria-current="page" to="/Favourite">
                 Favourites
               </Link>
             </li>
